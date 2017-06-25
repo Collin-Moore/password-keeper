@@ -12,4 +12,7 @@ export class SigninComponent implements OnInit {
   ngOnInit() {
   }
 
+  signInWithRosefire(): void {
+    console.log("TODO: Sign in with Rosefire");
+  }
 }
