@@ -5,6 +5,8 @@ import * as firebase from 'firebase/app';
 import { Router } from "@angular/router";
 import { FirebaseListObservable, AngularFireDatabase } from "angularfire2/database";
 import { Password } from "app/models/password.model";
+import { MdDialog } from "@angular/material";
+import { PasswordDialogComponent } from "app/password-dialog/password-dialog.component";
 
 @Component({
   selector: 'app-main',
@@ -16,7 +18,10 @@ export class MainComponent implements OnInit, OnDestroy {
   private authStateSubscription: Subscription;
   passwordStream: FirebaseListObservable<Password[]>;
 
-  constructor(private afAuth: AngularFireAuth, private router: Router, private db: AngularFireDatabase) {
+  constructor(private afAuth: AngularFireAuth,
+              private router: Router,
+              private db: AngularFireDatabase,
+              private dialog: MdDialog) {
   }
 
   ngOnDestroy(): void {
@@ -36,5 +41,10 @@ export class MainComponent implements OnInit, OnDestroy {
         console.log("User is not signed in");
       }
     });
+  }
+
+  showPasswordDialog(): void {
+    this.dialog.open(PasswordDialogComponent);
+    
   }
 }
