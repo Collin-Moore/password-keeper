@@ -12,5 +12,6 @@ export const environment = {
     projectId: "moorect-password-keeper",
     storageBucket: "moorect-password-keeper.appspot.com",
     messagingSenderId: "116185973242"
-  }
+  },
+  rosefireRegistryToken: "43de9247-b500-4810-b16f-66f123152ccc"
 };
