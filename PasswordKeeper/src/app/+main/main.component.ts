@@ -3,6 +3,8 @@ import { Subscription } from "rxjs/Subscription";
 import { AngularFireAuth } from "angularfire2/auth";
 import * as firebase from 'firebase/app';
 import { Router } from "@angular/router";
+import { FirebaseListObservable, AngularFireDatabase } from "angularfire2/database";
+import { Password } from "app/models/password.model";
 
 @Component({
   selector: 'app-main',
@@ -11,9 +13,10 @@ import { Router } from "@angular/router";
 })
 export class MainComponent implements OnInit, OnDestroy {
 
-  private authStateSubscription: Subscription; 
+  private authStateSubscription: Subscription;
+  passwordStream: FirebaseListObservable<Password[]>;
 
-  constructor(private afAuth: AngularFireAuth, private router: Router) {
+  constructor(private afAuth: AngularFireAuth, private router: Router, private db: AngularFireDatabase) {
   }
 
   ngOnDestroy(): void {
@@ -25,7 +28,8 @@ export class MainComponent implements OnInit, OnDestroy {
         //signin just happened
 
         console.log("User is signed in as: " + user.uid);
-        
+        const firebasePath = `/users/${user.uid}`;
+        this.passwordStream = this.db.list(firebasePath);
       } else {
         //signout just happened
         this.router.navigate(["/signin"]);
