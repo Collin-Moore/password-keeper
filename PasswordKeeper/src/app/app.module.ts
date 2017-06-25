@@ -38,6 +38,8 @@ import {
   MdToolbarModule,
   MdTooltipModule
 } from '@angular/material';
+import { SigninComponent } from './+signin/signin.component';
+import { MainComponent } from './+main/main.component';
 
 export const MaterialModules = [
   MdAutocompleteModule,
@@ -67,7 +69,9 @@ export const MaterialModules = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SigninComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
