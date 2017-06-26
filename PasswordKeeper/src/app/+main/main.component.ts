@@ -45,7 +45,6 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   showPasswordDialog(): void {
-    console.log("Show dialog");
     const dialogConfig = new MdDialogConfig();
     dialogConfig.data = {firebasePath: this.firebasePath};
     this.dialog.open(PasswordDialogComponent, dialogConfig);

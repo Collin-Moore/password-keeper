@@ -19,16 +19,13 @@ export class PasswordDialogComponent implements OnInit {
   constructor(private dialogRef: MdDialogRef<PasswordDialogComponent>,
               @Inject(MD_DIALOG_DATA) private dialogData: PasswordDialogData) {    
     this.formPassword = new Password();
-    console.log("Received the data: ", dialogData);
   }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    try {
-      console.log("FormPassword: ", this.formPassword);
-      
+    try { 
       firebase.database().ref(this.dialogData.firebasePath).push(this.formPassword);
     } catch (e) {
       console.log("Submit error", e);
