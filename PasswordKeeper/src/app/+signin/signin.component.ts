@@ -23,9 +23,9 @@ export class SigninComponent implements OnInit {
         console.error(error);
         return;
       }
-      console.log("Rosefire is don. User: " + rfUser);
+      console.log("Rosefire is don. User: ", rfUser);
       this.afAuth.auth.signInWithCustomToken(rfUser.token).then( (authState) => { 
-        console.log("Firebase signin is done now too. User: " + authState);
+        console.log("Firebase signin is done now too. User: ", authState);
         this.router.navigate(["/"]);
       });
     });
