@@ -9,6 +9,7 @@ import { Password } from "app/models/password.model";
 export class PasswordDisplayCardComponent implements OnInit {
 
   @Input() password: Password;
+  isExpanded = false;
 
   constructor() { }
 
